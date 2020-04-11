@@ -168,12 +168,53 @@
 ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
 (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
 
-;; keybinding for helm-projectile-ag
+;; Alternate buffers
+(defun alternate-buffer ()
+  "Alternate between the current buffer and the previous."
+  (interactive)
+    (switch-to-buffer (caar (window-prev-buffers))))
+
+;; configuration of winum package
+(require 'winum)
+
+(defun winum-assign-9-to-calculator-8-to-flycheck-errors ()
+  (cond
+   ((equal (buffer-name) "*Calculator*") 9)
+   ((equal (buffer-name) "*Flycheck errors*") 8)))
+
+(defun winum-assign-0-to-neotree ()
+  (when (string-match-p (buffer-name) ".*\\*NeoTree\\*.*") 0))
+
+(add-to-list 'winum-assign-functions #'winum-assign-9-to-calculator-8-to-flycheck-errors)
+(add-to-list 'winum-assign-functions #'winum-assign-0-to-neotree)
+
+(set-face-attribute 'winum-face nil :weight 'bold)
+
+(setq window-numbering-scope            'global
+      winum-reverse-frame-list          nil
+      winum-auto-assign-0-to-minibuffer t
+      winum-auto-setup-mode-line        t
+      winum-format                      " %s "
+      winum-mode-line-position          1
+      winum-ignored-buffers             '(" *which-key*")
+      winum-ignored-buffers-regexp      '(" \\*Treemacs-.*"))
+
+(winum-mode)
+
+;; keybinding for leader key
 (map!
  (:leader
    (:desc "M-x"                   :n "SPC" #'execute-extended-command)
    (:desc "helm-projectile-ag"    :n "/"   #'helm-projectile-ag)
-   (:desc "Switch to last buffer" :n "TAB" #'switch-to-prev-buffer)
+   (:desc "Alternate buffer"      :n "TAB" #'alternate-buffer)
+   (:desc "Select window 0"       :n "0"   #'winum-select-window-0)
+   (:desc "Select window 1"       :n "1"   #'winum-select-window-1)
+   (:desc "Select window 2"       :n "2"   #'winum-select-window-2)
+   (:desc "Select window 3"       :n "3"   #'winum-select-window-3)
+   (:desc "Select window 4"       :n "4"   #'winum-select-window-4)
+   (:desc "Select window 5"       :n "5"   #'winum-select-window-5)
+   (:desc "Select window 6"       :n "6"   #'winum-select-window-6)
+   (:desc "Select window 7"       :n "7"   #'winum-select-window-7)
+   (:desc "Select window 8"       :n "8"   #'winum-select-window-8)
  )
-)
-;; (global-set-key (kbd "M-s") 'helm-projectile-ag)
+ )
