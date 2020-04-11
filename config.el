@@ -19,12 +19,13 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+(setq doom-font (font-spec :family "monospace" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'atom-one-dark)
+;; (setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -216,5 +217,9 @@
    (:desc "Select window 6"       :n "6"   #'winum-select-window-6)
    (:desc "Select window 7"       :n "7"   #'winum-select-window-7)
    (:desc "Select window 8"       :n "8"   #'winum-select-window-8)
+
+   (:prefix "o"
+      (:desc "Open eshell" :n "s" #'eshell)
+   )
  )
- )
+)
