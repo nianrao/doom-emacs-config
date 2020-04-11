@@ -81,6 +81,11 @@
 (require 'flycheck)
 (setq-default flycheck-disabled-checkers '(c/c++-clang))
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-check-syntax-automatically '(mode-enabled idle-change))
+(use-package flycheck-clang-tidy
+  :after flycheck
+  :hook (flycheck-mode . flycheck-clang-tidy-setup))
+
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'vhdl-mode-hook 'flycheck-mode)
@@ -201,6 +206,28 @@
       winum-ignored-buffers-regexp      '(" \\*Treemacs-.*"))
 
 (winum-mode)
+
+;; lsp-mode
+;; (use-package lsp-mode
+;;   :hook ((c++-mode . lsp)
+;;          (lsp-mode . lsp-enable-which-key-integration))
+;;   :commands lsp)
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+
+;; hdl-checker
+(require 'use-package)
+(setq lsp-vhdl-server-path "~/.local/bin/hdl_checker")
+(custom-set-variables '(lsp-vhdl-server 'hdl-checker))
+;; (use-package lsp-mode :config (add-hook 'vhdl-mode-hook 'lsp))
+
+;; ccls
+;; (use-package ccls
+;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;          (lamda () (require 'ccls) (lsp))))
+;; (setq ccls-executable "usr/local/bin/ccls")
+
 
 ;; keybinding for leader key
 (map!

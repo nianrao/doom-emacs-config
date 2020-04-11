@@ -29,6 +29,12 @@
 (package! evil-multiedit)
 (package! helm-projectile)
 (package! winum)
+(package! lsp-mode)
+(package! lsp-ui)
+(package! company-lsp)
+(package! all-the-icons)
+(package! ccls)
+(package! flycheck-clang-tidy)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
