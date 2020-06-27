@@ -106,6 +106,7 @@
 ;; enable indent guide
 (require 'indent-guide)
 (indent-guide-global-mode)
+(setq highlight-indent-guides-auto-enabled nil)
 
 ;; diff highlight
 (global-git-commit-mode t)
