@@ -220,7 +220,13 @@
 ;; hdl-checker
 (require 'use-package)
 (setq lsp-vhdl-server-path "~/.local/bin/hdl_checker")
-(custom-set-variables '(lsp-vhdl-server 'hdl-checker))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(lsp-vhdl-server 'hdl-checker)
+ '(package-selected-packages '(shell-here dumb-jump helm-ag)))
 ;; (use-package lsp-mode :config (add-hook 'vhdl-mode-hook 'lsp))
 
 ;; ccls
@@ -251,7 +257,13 @@
    (:desc "Select window 8"       :n "8"   #'winum-select-window-8)
 
    (:prefix "o"
-      (:desc "Open eshell" :n "s" #'eshell)
+      (:desc "Open eshell" :n "s" #'shell-here)
    )
  )
 )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
