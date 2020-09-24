@@ -64,8 +64,8 @@
 ;; Format the code on save
 (defun clang-format-on-save ()
   (add-hook 'before-save-hook #'clang-format-buffer nil 'local))
-(add-hook 'c++-mode-hook 'clang-format-on-save)
-(add-hook 'c-mode-hook 'clang-format-on-save)
+;; (add-hook 'c++-mode-hook 'clang-format-on-save)
+;; (add-hook 'c-mode-hook 'clang-format-on-save)
 
 (defun vhdl-beautify-on-save ()
   (add-hook 'before-save-hook #'vhdl-beautify-buffer nil 'local)
@@ -237,8 +237,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; open eshell in a new window
-;; (setq display-buffer-alist '(("\\`\\*e?shell" display-buffer-pop-up-window)))
-;; (setq display-buffer-alist '(("\\`\\*e?shell" display-buffer-pop-up-frame)))
+(require 'shell-here)
 
 ;; keybinding for leader key
 (map!
