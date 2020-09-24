@@ -55,12 +55,14 @@
 ;;
 ;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup tab
 (setq-default indent-tabs-mode nil)
 (setq-default default-tab-width 3)
 (setq-default c-default-style "linux"
               c-basic-offset 3)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Format the code on save
 (defun clang-format-on-save ()
   (add-hook 'before-save-hook #'clang-format-buffer nil 'local))
@@ -72,11 +74,13 @@
   )
 ;; (add-hook 'vhdl-mode-hook 'vhdl-beautify-on-save)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 80 column marker
 ;; Activate column indicator in prog-mode and text-mode
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flycheck setup
 (require 'flycheck)
 (setq-default flycheck-disabled-checkers '(c/c++-clang))
@@ -99,15 +103,18 @@
 (add-hook 'vhdl-mode-hook (lambda () (setq flycheck-ghdl-language-standard "93")))
 (add-hook 'vhdl-mode-hook (lambda () (setq flycheck-ghdl-ieee-library "synopsys")))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto package update
 (require 'auto-package-update)
 (auto-package-update-maybe)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; enable indent guide
 (require 'indent-guide)
 (indent-guide-global-mode)
 (setq highlight-indent-guides-auto-enabled nil)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; diff highlight
 (global-git-commit-mode t)
 
@@ -120,23 +127,24 @@
 (global-diff-hl-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; maximize window at startup
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-;; configuration of auto-complete
-;; (ac-config-default)
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; company configuration
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0.2
       company-minimum-prefix-length 3)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; vivado mode for .xdc files
 (setq auto-mode-alist (cons '("\\.xdc\\'" . vivado-mode) auto-mode-alist))
 (add-hook 'vivado-mode-hook '(lambda () (font-lock-mode 1)))
 (autoload 'vivado-mode "vivado-mode")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup evil-multiedit
 (require 'evil-multiedit)
 ;; Highlights all matches of the selection in the buffer.
@@ -175,12 +183,14 @@
 ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
 (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Alternate buffers
 (defun alternate-buffer ()
   "Alternate between the current buffer and the previous."
   (interactive)
     (switch-to-buffer (caar (window-prev-buffers))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; configuration of winum package
 (require 'winum)
 
@@ -208,6 +218,7 @@
 
 (winum-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; lsp-mode
 ;; (use-package lsp-mode
 ;;   :hook ((c++-mode . lsp)
@@ -217,6 +228,7 @@
 (use-package company-lsp :commands company-lsp)
 (use-package helm-lsp :commands helm-lsp-workspace-symbol)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hdl-checker
 (require 'use-package)
 (setq lsp-vhdl-server-path "~/.local/bin/hdl_checker")
@@ -229,16 +241,11 @@
  '(package-selected-packages '(shell-here dumb-jump helm-ag)))
 ;; (use-package lsp-mode :config (add-hook 'vhdl-mode-hook 'lsp))
 
-;; ccls
-;; (use-package ccls
-;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;          (lamda () (require 'ccls) (lsp))))
-;; (setq ccls-executable "usr/local/bin/ccls")
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; open eshell in a new window
 (require 'shell-here)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybinding for leader key
 (map!
  (:leader
