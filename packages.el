@@ -36,6 +36,7 @@
 (package! flycheck-clang-tidy)
 (package! shell-here)
 (package! helm-ag)
+(package! helm-rg)
 (package! groovy-mode)
 
 ;; To install a package directly from a particular repo, you'll need to specify

@@ -251,6 +251,7 @@
  (:leader
    (:desc "M-x"                   :n "SPC" #'execute-extended-command)
    (:desc "helm-projectile-ag"    :n "/"   #'helm-projectile-ag)
+   (:desc "helm-projectile-rg"    :n "r"   #'helm-projectile-rg)
    (:desc "Alternate buffer"      :n "TAB" #'alternate-buffer)
    (:desc "Select window 0"       :n "0"   #'winum-select-window-0)
    (:desc "Select window 1"       :n "1"   #'winum-select-window-1)
