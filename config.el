@@ -63,16 +63,19 @@
               c-basic-offset 3)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Format the code on save
+;; Format the code
 (defun clang-format-on-save ()
   (add-hook 'before-save-hook #'clang-format-buffer nil 'local))
 ;; (add-hook 'c++-mode-hook 'clang-format-on-save)
 ;; (add-hook 'c-mode-hook 'clang-format-on-save)
+(add-hook 'c++-mode-hook (lambda () (local-set-key (kbd "M-f") #'clang-format-region)))
+(add-hook 'c-mode-hook (lambda () (local-set-key (kbd "M-f") #'clang-format-region)))
 
 (defun vhdl-beautify-on-save ()
   (add-hook 'before-save-hook #'vhdl-beautify-buffer nil 'local)
   )
 ;; (add-hook 'vhdl-mode-hook 'vhdl-beautify-on-save)
+(add-hook 'vhdl-mode-hook (lambda () (local-set-key (kbd "M-f") #'vhdl-beautify-region)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 80 column marker
@@ -267,6 +270,7 @@
    )
  )
 )
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
