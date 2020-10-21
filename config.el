@@ -56,6 +56,12 @@
 ;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; enable mouse in terminal
+(require 'mouse)
+(xterm-mouse-mode t)
+(mouse-wheel-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; setup tab
 (setq-default indent-tabs-mode nil)
 (setq-default default-tab-width 3)
